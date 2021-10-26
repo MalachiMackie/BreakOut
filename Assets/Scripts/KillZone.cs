@@ -12,5 +12,10 @@ public class KillZone : MonoBehaviour
             var ballScript = col.gameObject.GetComponent<Ball>();
             ballScript.Crashed();
         }
+
+        if (col.gameObject.CompareTag(Tags.PowerUp))
+        {
+            Destroy(col.gameObject);
+        }
     }
 }

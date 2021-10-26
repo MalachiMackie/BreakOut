@@ -6,5 +6,6 @@
         public const string Ball = "Ball";
         public const string Player = "Player";
         public const string KillZone = "KillZone";
+        public const string PowerUp = "PowerUp";
     }
 }

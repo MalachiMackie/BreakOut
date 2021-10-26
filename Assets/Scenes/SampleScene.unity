@@ -743,8 +743,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  powerUpType: 1
-  powerUpApplies: 2
+  powerUpType: 0
+  powerUpApplies: 0
 --- !u!61 &176604591
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4292,8 +4292,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  powerUpType: 2
-  powerUpApplies: 2
+  powerUpType: 0
+  powerUpApplies: 0
 --- !u!1 &947094379
 GameObject:
   m_ObjectHideFlags: 0
