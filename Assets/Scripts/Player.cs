@@ -4,23 +4,36 @@ using System.Linq;
 using Shared;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float kickForce = 4f;
+    [SerializeField] private float initialKickForce = 4f;
+    [SerializeField] private float maxKickForce = 8f;
+    [SerializeField] private float minKickForce = 1f;
     [SerializeField] private Ball ballPrefab;
-    [SerializeField] private float movementSpeed = 3.5f;
+    [SerializeField] private float initialMovementSpeed = 3.5f;
     [SerializeField] private float maxMovementSpeed = 10f;
+    [SerializeField] private float initialPlayerLength = 2.5f;
+    [SerializeField] private float minPlayerLength = 0.5f;
+    [SerializeField] private float maxPlayerLength = 4.5f;
     
     [Range(0f, 80f)]
     [SerializeField] private float maxBounceAngle = 30f;
-    
 
+
+    private float _kickForce;
+    private float _movementSpeed;
     private bool _hasBalls;
     
     private void Awake()
     {
         Helpers.AssertIsNotNullOrQuit(ballPrefab, "Player.ballPrefab was not assigned");
+        _movementSpeed = initialMovementSpeed;
+        _kickForce = initialKickForce;
+        var scale = transform.localScale;
+        scale.x = initialPlayerLength;
+        transform.localScale = scale;
     }
 
     private void Start()
@@ -33,6 +46,11 @@ public class Player : MonoBehaviour
         if (_hasBalls && Input.GetKeyDown(KeyCode.Space))
         {
             KickBalls();
+        }
+
+        if (!_hasBalls && Input.GetKeyDown(KeyCode.DoubleQuote))
+        {
+            NewBalls(1);
         }
     }
 
@@ -73,11 +91,11 @@ public class Player : MonoBehaviour
         var currentPosition = transform.position;
         if (isLeftPressed)
         {
-            currentPosition.x -= movementSpeed * Time.fixedDeltaTime;
+            currentPosition.x -= _movementSpeed * Time.fixedDeltaTime;
         }
         else
         {
-            currentPosition.x += movementSpeed * Time.fixedDeltaTime;
+            currentPosition.x += _movementSpeed * Time.fixedDeltaTime;
         }
 
         transform.position = DoBoundsCheck(currentPosition);
@@ -161,10 +179,51 @@ public class Player : MonoBehaviour
         {
             var ballTransform = ball.transform;
             ballTransform.SetParent(null, true);
-            ball.KickStart(Vector2.up, kickForce);
+            ball.KickStart(Vector2.up, _kickForce);
         }
 
         _hasBalls = false;
+    }
+
+    private void ChangeXScale(float difference)
+    {
+        if (difference == 0)
+        {
+            return;
+        }
+        var scale = transform.localScale;
+
+        scale.x = difference > 0
+            ? Math.Min(maxPlayerLength, scale.x += difference)
+            : Math.Max(minPlayerLength, scale.x += difference);
+        
+        transform.localScale = scale;
+    }
+
+    private void ChangeBallSpeed(float difference)
+    {
+        if (difference == 0)
+        {
+            return;
+        }
+
+        _kickForce = difference > 0
+            ? Math.Min(maxKickForce, _kickForce += difference)
+            : Math.Max(minKickForce, _kickForce += difference);
+
+        var allBalls = FindObjectsOfType<Ball>();
+        foreach (var ball in allBalls)
+        {
+            if (ball.transform.parent != null)
+            {
+                continue;
+            }
+
+            var ballRb = ball.GetComponent<Rigidbody2D>();
+            var ballVelocity = ballRb.velocity;
+            ballRb.velocity = Vector2.zero;
+            ballRb.AddForce(ballVelocity.normalized * _kickForce, ForceMode2D.Impulse);
+        }
     }
 
     public void GivePowerUp(PowerUpType type)
@@ -176,9 +235,26 @@ public class Player : MonoBehaviour
             case PowerUpType.MultiBall:
                 NewBalls(3, ballPrefab);
                 break;
-            case PowerUpType.Speedup:
-                movementSpeed = Math.Min(movementSpeed + 2, maxMovementSpeed);
+            case PowerUpType.SpeedUp:
+                _movementSpeed = Math.Min(_movementSpeed + 2, maxMovementSpeed);
                 break;
+            case PowerUpType.SpeedDown:
+                _movementSpeed = Math.Max(0, _movementSpeed - 2);
+                break;
+            case PowerUpType.IncreaseLength:
+                ChangeXScale(1);
+                break;
+            case PowerUpType.DecreaseLength:
+                ChangeXScale(-1);
+                break;
+            case PowerUpType.BallSpeedUp:
+                ChangeBallSpeed(1);
+                break;
+            case PowerUpType.BallSpeedDown:
+                ChangeBallSpeed(-1);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
 
         AudioManager.Instance.PlayPowerUp();

@@ -7922,10 +7922,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3376d1abc44a0b9871a03d3e2ae0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kickForce: 4
+  initialKickForce: 4
+  maxKickForce: 8
+  minKickForce: 1
   ballPrefab: {fileID: 4338537080092844133, guid: d36a0f8937f4c8c4b8d2d082481a33e7, type: 3}
-  movementSpeed: 3.5
+  initialMovementSpeed: 3.5
   maxMovementSpeed: 10
+  initialPlayerLength: 2.5
+  minPlayerLength: 1
+  maxPlayerLength: 4.5
   maxBounceAngle: 30
 --- !u!1 &1926725921
 GameObject:
@@ -8551,10 +8556,25 @@ MonoBehaviour:
   powerUps:
   - type: 1
     applies: 2
-    count: 5
+    count: 2
   - type: 2
     applies: 2
-    count: 5
+    count: 2
+  - type: 3
+    applies: 2
+    count: 2
+  - type: 4
+    applies: 2
+    count: 2
+  - type: 5
+    applies: 2
+    count: 2
+  - type: 6
+    applies: 2
+    count: 2
+  - type: 7
+    applies: 2
+    count: 2
 --- !u!4 &2042230058
 Transform:
   m_ObjectHideFlags: 0

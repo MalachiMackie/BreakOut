@@ -10,7 +10,7 @@ public class LevelDetails : MonoBehaviour
     public class PowerUpAmount
     {
         public PowerUpType type;
-        public BrickPowerUpApplies applies;
+        public BrickPowerUpApplies applies = BrickPowerUpApplies.BrickDestroy;
         public int count;
     }
 
@@ -18,6 +18,10 @@ public class LevelDetails : MonoBehaviour
 
     private void Awake()
     {
+        if (!powerUps.Any())
+        {
+            return;
+        }
         var maxPowerUps = powerUps.GroupBy(x => x.type).Select(x => x.Count()).Max();
         Helpers.AssertIsTrueOrQuit(maxPowerUps <= 1, "level details can only specify a powerup once");
         Helpers.AssertIsTrueOrQuit(powerUps.All(x => x.type != PowerUpType.None),

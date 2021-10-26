@@ -27,5 +27,10 @@ public enum PowerUpType
 {
     None,
     MultiBall,
-    Speedup
+    SpeedUp,
+    SpeedDown,
+    IncreaseLength,
+    DecreaseLength,
+    BallSpeedUp,
+    BallSpeedDown
 }
