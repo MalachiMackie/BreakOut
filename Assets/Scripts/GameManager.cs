@@ -1,6 +1,9 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Shared;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -26,6 +29,33 @@ public class GameManager : Singleton<GameManager>
 
     private void StartGame()
     {
+        var levelDetails = FindObjectOfType<LevelDetails>();
+        var bricks = FindObjectsOfType<Brick>();
+        var poweredUpBricks = new HashSet<int>();
+
+        foreach (var powerUp in levelDetails.powerUps)
+        {
+            var bricksLeft = powerUp.count;
+            while (bricksLeft > 0)
+            {
+                if (poweredUpBricks.Count >= bricks.Length)
+                {
+                    throw new InvalidOperationException(
+                        "The number of power ups is greater than the number of bricks in the level");
+                }
+
+                int index;
+                do
+                {
+                    index = Random.Range(0, bricks.Length);
+                } while (poweredUpBricks.Contains(index));
+                
+                poweredUpBricks.Add(index);
+                bricksLeft--;
+                bricks[index].SetPowerUp(powerUp.type, powerUp.applies);
+            }
+        }
+        
         player.NewBalls(1);
     }
 
