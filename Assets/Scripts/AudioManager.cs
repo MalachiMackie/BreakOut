@@ -12,9 +12,9 @@ public class AudioManager : Singleton<AudioManager>
 
     private void Awake()
     {
-        Helpers.AssertIsNotNullAndQuit(ballCrashSound, "AudioManager.ballCrashSound was not assigned");
-        Helpers.AssertIsNotNullAndQuit(ballBounceSound, "AudioManager.ballBounceSound was not assigned");
-        Helpers.AssertIsNotNullAndQuit(powerUpSound, "AudioManager.powerUpSound was not assigned");
+        Helpers.AssertIsNotNullOrQuit(ballCrashSound, "AudioManager.ballCrashSound was not assigned");
+        Helpers.AssertIsNotNullOrQuit(ballBounceSound, "AudioManager.ballBounceSound was not assigned");
+        Helpers.AssertIsNotNullOrQuit(powerUpSound, "AudioManager.powerUpSound was not assigned");
 
         _audioSource = GetComponent<AudioSource>();
 

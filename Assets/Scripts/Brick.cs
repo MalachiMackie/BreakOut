@@ -4,10 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Brick : MonoBehaviour
 {
-    public float health = 1;
+    [SerializeField] private float health = 1;
 
-    public PowerUpType powerUpType;
-    public BrickPowerUpApplies powerUpApplies;
+    [SerializeField] private PowerUpType powerUpType;
+    [SerializeField] private BrickPowerUpApplies powerUpApplies;
 
     private void OnCollisionEnter2D(Collision2D col)
     {
@@ -31,7 +31,7 @@ public class Brick : MonoBehaviour
     private void Damage(int damageLevel)
     {
         health -= damageLevel;
-        if (powerUpApplies is BrickPowerUpApplies.Damage || powerUpApplies is BrickPowerUpApplies.DamageOrDie)
+        if (powerUpApplies is BrickPowerUpApplies.BrickDamaged || powerUpApplies is BrickPowerUpApplies.BrickDamagedOrDestroyed)
         {
             ApplyPowerUp();
         }
@@ -43,18 +43,24 @@ public class Brick : MonoBehaviour
 
     private void Die()
     {
-        if (powerUpApplies is BrickPowerUpApplies.Die || powerUpApplies is BrickPowerUpApplies.DamageOrDie)
+        if (powerUpApplies is BrickPowerUpApplies.BrickDestroy || powerUpApplies is BrickPowerUpApplies.BrickDamagedOrDestroyed)
         {
             ApplyPowerUp();
         }
         Destroy(gameObject);
+    }
+
+    public void SetPowerUp(PowerUpType type, BrickPowerUpApplies applies)
+    {
+        powerUpType = type;
+        powerUpApplies = applies;
     }
 }
 
 public enum BrickPowerUpApplies
 {
     None,
-    Damage,
-    Die,
-    DamageOrDie
+    BrickDamaged,
+    BrickDestroy,
+    BrickDamagedOrDestroyed
 }

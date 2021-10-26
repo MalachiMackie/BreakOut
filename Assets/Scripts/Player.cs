@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     
     private void Awake()
     {
-        Helpers.AssertIsNotNullAndQuit(ballPrefab, "Player.ballPrefab was not assigned");
+        Helpers.AssertIsNotNullOrQuit(ballPrefab, "Player.ballPrefab was not assigned");
     }
 
     private void Start()

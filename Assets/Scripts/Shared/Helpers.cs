@@ -32,7 +32,7 @@ namespace Shared
             action(param);
         }
 
-        public static void AssertIsNotNullAndQuit<T>(T assert, string message)
+        public static void AssertIsNotNullOrQuit<T>(T assert, string message)
             where T : class
         {
             try
@@ -42,6 +42,19 @@ namespace Shared
             catch (AssertionException e)
             {
                 Debug.LogError(e.Message);
+                Quit();
+            }
+        }
+
+        public static void AssertIsTrueOrQuit(bool condition, string message)
+        {
+            try
+            {
+                Assert.IsTrue(condition, message);
+            }
+            catch (AssertionException e)
+            {
+                Debug.LogError(e);
                 Quit();
             }
         }

@@ -10,8 +10,8 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        Helpers.AssertIsNotNullAndQuit(powerUpPrefab, "GameManager.powerUpPrefab was not assigned");
-        Helpers.AssertIsNotNullAndQuit(player, "GameManager.player was not assigned");
+        Helpers.AssertIsNotNullOrQuit(powerUpPrefab, "GameManager.powerUpPrefab was not assigned");
+        Helpers.AssertIsNotNullOrQuit(player, "GameManager.player was not assigned");
         StartGame();
     }
     
