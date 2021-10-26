@@ -7,12 +7,13 @@ using UnityEngine.Assertions;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float kickForce = 3f;
+    [SerializeField] private float kickForce = 4f;
     [SerializeField] private Ball ballPrefab;
-    [SerializeField] private float movementSpeed = 2.0f;
+    [SerializeField] private float movementSpeed = 3.5f;
+    [SerializeField] private float maxMovementSpeed = 10f;
     
     [Range(0f, 80f)]
-    [SerializeField] private float maxBounceAngle = 20f;
+    [SerializeField] private float maxBounceAngle = 30f;
     
 
     private bool _hasBalls;
@@ -176,7 +177,7 @@ public class Player : MonoBehaviour
                 NewBalls(3, ballPrefab);
                 break;
             case PowerUpType.Speedup:
-                movementSpeed *= 2;
+                movementSpeed = Math.Min(movementSpeed + 2, maxMovementSpeed);
                 break;
         }
 

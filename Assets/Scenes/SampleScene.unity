@@ -7925,6 +7925,7 @@ MonoBehaviour:
   kickForce: 4
   ballPrefab: {fileID: 4338537080092844133, guid: d36a0f8937f4c8c4b8d2d082481a33e7, type: 3}
   movementSpeed: 3.5
+  maxMovementSpeed: 10
   maxBounceAngle: 30
 --- !u!1 &1926725921
 GameObject:
