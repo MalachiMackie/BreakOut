@@ -10,8 +10,15 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject powerUpPrefab;
     [SerializeField] private Player player;
 
+    public event EventHandler GamePaused;
+    public event EventHandler<GameState> GameFinished;
+    public event EventHandler GameStarted;
+
+    private GameState _gameState;
+
     private void Start()
     {
+        _gameState = GameState.StartMenu;
         Helpers.AssertIsNotNullOrQuit(powerUpPrefab, "GameManager.powerUpPrefab was not assigned");
         Helpers.AssertIsNotNullOrQuit(player, "GameManager.player was not assigned");
         StartGame();
@@ -20,10 +27,28 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (_gameState != GameState.Paused && Input.GetKeyDown(KeyCode.Escape))
         {
-            Helpers.Quit();
+            Pause();
         }
+    }
+
+    private void Pause()
+    {
+        _gameState = GameState.Paused;
+        Time.timeScale = 0f;
+        GamePaused?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void Unpause()
+    {
+        _gameState = GameState.Playing;
+        Time.timeScale = 1f;
+    }
+
+    public void Quit()
+    {
+        Helpers.Quit();
     }
 
     private void StartGame()
@@ -56,12 +81,14 @@ public class GameManager : Singleton<GameManager>
         }
         
         player.NewBalls(1);
+        _gameState = GameState.Playing;
+        GameStarted?.Invoke(this, EventArgs.Empty);
     }
 
-    public void BallCrashed()
+    public void BallCrashed(Ball crashedBall)
     {
         AudioManager.Instance.PlayBallCrash();
-        var ballsRemaining = FindObjectsOfType<Ball>();
+        var ballsRemaining = FindObjectsOfType<Ball>().Except(new [] {crashedBall});
         if (!ballsRemaining.Any())
         {
             PlayerLostLife();
@@ -73,8 +100,24 @@ public class GameManager : Singleton<GameManager>
         AudioManager.Instance.PlayBallBounce();
     }
 
+    private void PlayerDied()
+    {
+        _gameState = GameState.Lost;
+        GameFinished?.Invoke(this, _gameState);
+    }
+
     private void PlayerLostLife()
     {
         Debug.Log("You're Dead :(");
+        PlayerDied();
     }
+}
+
+public enum GameState
+{
+    StartMenu,
+    Playing,
+    Paused,
+    Won,
+    Lost
 }

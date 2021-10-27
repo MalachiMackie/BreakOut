@@ -49,7 +49,7 @@ public class Ball : MonoBehaviour
 
     public void Crashed()
     {
-        GameManager.Instance.BallCrashed();
+        GameManager.Instance.BallCrashed(this);
         Destroy(gameObject);
     }
 }
