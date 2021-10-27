@@ -235,16 +235,16 @@ public class Player : MonoBehaviour
             case PowerUpType.MultiBall:
                 NewBalls(3, ballPrefab);
                 break;
-            case PowerUpType.SpeedUp:
+            case PowerUpType.PlayerSpeedUp:
                 _movementSpeed = Math.Min(_movementSpeed + 2, maxMovementSpeed);
                 break;
-            case PowerUpType.SpeedDown:
+            case PowerUpType.PlayerSpeedDown:
                 _movementSpeed = Math.Max(0, _movementSpeed - 2);
                 break;
-            case PowerUpType.IncreaseLength:
+            case PowerUpType.PlayerIncreaseLength:
                 ChangeXScale(1);
                 break;
-            case PowerUpType.DecreaseLength:
+            case PowerUpType.PlayerDecreaseLength:
                 ChangeXScale(-1);
                 break;
             case PowerUpType.BallSpeedUp:

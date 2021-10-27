@@ -5,6 +5,8 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     [SerializeField] private float health = 1;
+    [SerializeField] private PowerUp powerUpPrefab;
+    [SerializeField] private float powerUpDropForce = 3f;
 
     [SerializeField] private PowerUpType powerUpType;
     [SerializeField] private BrickPowerUpApplies powerUpApplies;
@@ -19,13 +21,18 @@ public class Brick : MonoBehaviour
         }
     }
 
-    private void ApplyPowerUp()
+    private void DropPowerUp()
     {
         if (powerUpType is PowerUpType.None)
         {
             return;
         }
-        GameManager.Instance.DropPowerUp(transform.position, powerUpType);
+
+        var localTransform = transform;
+        var powerUp = Instantiate(powerUpPrefab, localTransform.position, localTransform.rotation);
+        powerUp.SetType(powerUpType);
+        var powerUpRb = powerUp.GetComponent<Rigidbody2D>();
+        powerUpRb.AddForce(new Vector2(0, -1) * powerUpDropForce, ForceMode2D.Impulse);
     }
 
     private void Damage(int damageLevel)
@@ -33,7 +40,7 @@ public class Brick : MonoBehaviour
         health -= damageLevel;
         if (powerUpApplies is BrickPowerUpApplies.BrickDamaged || powerUpApplies is BrickPowerUpApplies.BrickDamagedOrDestroyed)
         {
-            ApplyPowerUp();
+            DropPowerUp();
         }
         if (health >= 0)
         {
@@ -45,7 +52,7 @@ public class Brick : MonoBehaviour
     {
         if (powerUpApplies is BrickPowerUpApplies.BrickDestroy || powerUpApplies is BrickPowerUpApplies.BrickDamagedOrDestroyed)
         {
-            ApplyPowerUp();
+            DropPowerUp();
         }
         Destroy(gameObject);
     }

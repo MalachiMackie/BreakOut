@@ -7,9 +7,8 @@ using Random = UnityEngine.Random;
 
 public class GameManager : Singleton<GameManager>
 {
-    public GameObject powerUpPrefab;
-    public float ballDropForce = 2f;
-    public Player player;
+    [SerializeField] private GameObject powerUpPrefab;
+    [SerializeField] private Player player;
 
     private void Start()
     {
@@ -67,15 +66,6 @@ public class GameManager : Singleton<GameManager>
         {
             PlayerLostLife();
         }
-    }
-
-    public void DropPowerUp(Vector3 position, PowerUpType type)
-    {
-        var powerUp = Instantiate(powerUpPrefab, position, Quaternion.identity);
-        var powerUpScript = powerUp.GetComponent<PowerUp>();
-        powerUpScript.type = type;
-        var powerUpRb = powerUp.GetComponent<Rigidbody2D>();
-        powerUpRb.AddForce(new Vector2(0, -1) * ballDropForce, ForceMode2D.Impulse);
     }
 
     public void BallBounced()
