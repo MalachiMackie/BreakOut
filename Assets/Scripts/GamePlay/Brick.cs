@@ -1,3 +1,4 @@
+using System;
 using Managers;
 using Shared;
 using UnityEngine;
@@ -5,14 +6,26 @@ using UnityEngine;
 namespace GamePlay
 {
     [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(SpriteRenderer))]
     public class Brick : MonoBehaviour
     {
-        [SerializeField] private float health = 1;
+        [SerializeField] private int health;
+        [SerializeField] private int initialHealth = 1;
         [SerializeField] private PowerUp powerUpPrefab;
         [SerializeField] private float powerUpDropForce = 3f;
 
         [SerializeField] private PowerUpType powerUpType;
         [SerializeField] private BrickPowerUpApplies powerUpApplies;
+
+        private SpriteRenderer _spriteRenderer;
+
+        private void Awake()
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            Helpers.AssertIsNotNullOrQuit(_spriteRenderer, "Could not find Sprite Renderer component on Brick");
+            
+            SetHealth(initialHealth);
+        }
 
         private void OnCollisionEnter2D(Collision2D col)
         {
@@ -40,20 +53,16 @@ namespace GamePlay
 
         private void Damage(int damageLevel)
         {
-            health -= damageLevel;
-            if (powerUpApplies is BrickPowerUpApplies.BrickDamaged || powerUpApplies is BrickPowerUpApplies.BrickDamagedOrDestroyed)
+            if (powerUpApplies is BrickPowerUpApplies.BrickDamaged or BrickPowerUpApplies.BrickDamagedOrDestroyed)
             {
                 DropPowerUp();
             }
-            if (health >= 0)
-            {
-                Die();
-            }
+            SetHealth(health - damageLevel);
         }
 
         private void Die()
         {
-            if (powerUpApplies is BrickPowerUpApplies.BrickDestroy || powerUpApplies is BrickPowerUpApplies.BrickDamagedOrDestroyed)
+            if (powerUpApplies is BrickPowerUpApplies.BrickDestroy or BrickPowerUpApplies.BrickDamagedOrDestroyed)
             {
                 DropPowerUp();
             }
@@ -65,6 +74,26 @@ namespace GamePlay
         {
             powerUpType = type;
             powerUpApplies = applies;
+        }
+
+        public void SetHealth(int newHealth)
+        {
+            if (newHealth < 1)
+            {
+                Die();
+                return;
+            }
+            health = newHealth;
+
+            _spriteRenderer.color = health switch
+            {
+                <= 0 => throw new InvalidOperationException("Unreachable"),
+                1 => BrickManager.Instance.oneHealthColor,
+                2 => BrickManager.Instance.twoHealthColor,
+                3 => BrickManager.Instance.threeHealthColor,
+                >=4 => BrickManager.Instance.fourOrMoreHealthColor 
+            };
+
         }
     }
 

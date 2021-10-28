@@ -458,6 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -689,6 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -840,6 +842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -991,6 +994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -1142,6 +1146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -1444,6 +1449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -1595,6 +1601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -1758,7 +1765,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpPrefab: {fileID: 8740797351510131697, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
-  player: {fileID: 1899271303}
 --- !u!1 &360911563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,6 +1878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -2157,6 +2164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -2308,6 +2316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -2459,6 +2468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -2610,6 +2620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -2761,6 +2772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -2912,6 +2924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -3063,6 +3076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -3214,6 +3228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -3529,6 +3544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -3680,6 +3696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -3831,6 +3848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -4069,6 +4087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -4220,6 +4239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -4640,6 +4660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -4871,6 +4892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -5136,6 +5158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -5173,6 +5196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -5324,6 +5348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -5592,6 +5617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -5823,6 +5849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -5974,6 +6001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -6125,6 +6153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -6276,6 +6305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -6561,6 +6591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -6966,6 +6997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -7117,6 +7149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -7348,6 +7381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -7663,6 +7697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -7814,6 +7849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -7965,6 +8001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -8196,6 +8233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -8347,6 +8385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -8498,6 +8537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -8649,6 +8689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -8800,6 +8841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -9165,6 +9207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -9468,6 +9511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -9736,6 +9780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -9887,6 +9932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -10328,6 +10374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -10479,6 +10526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -10630,6 +10678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -10781,6 +10830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -10998,6 +11048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 4
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -11149,6 +11200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 2
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -11267,6 +11319,55 @@ Transform:
   m_Father: {fileID: 568556564}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2072158796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2072158798}
+  - component: {fileID: 2072158797}
+  m_Layer: 0
+  m_Name: BrickManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2072158797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072158796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef38f5da5147e1c479590d834b976705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneHealthColor: {r: 0.6698113, g: 0.14463446, b: 0.12953897, a: 1}
+  twoHealthColor: {r: 0.9433962, g: 0.55928475, b: 0, a: 1}
+  threeHealthColor: {r: 0.9811321, g: 0.95765525, b: 0.078431375, a: 1}
+  fourOrMoreHealthColor: {r: 0.37941542, g: 0.8018868, b: 0.16264686, a: 1}
+  randomizeBrickHealth: 1
+--- !u!4 &2072158798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072158796}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2085754230
 GameObject:
   m_ObjectHideFlags: 0
@@ -11300,6 +11401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -11451,6 +11553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 3
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
@@ -11602,6 +11705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  initialHealth: 1
   powerUpPrefab: {fileID: -5743164927264593799, guid: ae23d9a94ece56b47a5495b9dbe40a65, type: 3}
   powerUpDropForce: 2
   powerUpType: 0
