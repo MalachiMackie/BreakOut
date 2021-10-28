@@ -24,7 +24,8 @@ namespace Managers
             _gameState = GameState.StartMenu;
             Helpers.AssertIsNotNullOrQuit(powerUpPrefab, "GameManager.powerUpPrefab was not assigned");
             Helpers.AssertIsNotNullOrQuit(player, "GameManager.player was not assigned");
-            StartGame();
+            SetupLevel();
+            Time.timeScale = 0f;
         }
     
         // Update is called once per frame
@@ -54,7 +55,7 @@ namespace Managers
             Helpers.Quit();
         }
 
-        private void StartGame()
+        private void SetupLevel()
         {
             var levelDetails = FindObjectOfType<LevelDetails>();
             var bricks = FindObjectsOfType<Brick>();
@@ -84,8 +85,13 @@ namespace Managers
             }
         
             player.NewBalls(1);
+        }
+
+        public void StartGame()
+        {
             _gameState = GameState.Playing;
             GameStarted?.Invoke(this, EventArgs.Empty);
+            Time.timeScale = 1f;
         }
 
         public void BallCrashed(Ball crashedBall)
