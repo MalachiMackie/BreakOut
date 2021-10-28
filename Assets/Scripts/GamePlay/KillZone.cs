@@ -1,21 +1,22 @@
-﻿using System;
-using Shared;
+﻿using Shared;
 using UnityEngine;
 
-
-public class KillZone : MonoBehaviour
+namespace GamePlay
 {
-    public void OnTriggerEnter2D(Collider2D col)
+    public class KillZone : MonoBehaviour
     {
-        if (col.gameObject.CompareTag(Tags.Ball))
+        public void OnTriggerEnter2D(Collider2D col)
         {
-            var ballScript = col.gameObject.GetComponent<Ball>();
-            ballScript.Crashed();
-        }
+            if (col.gameObject.CompareTag(Tags.Ball))
+            {
+                var ballScript = col.gameObject.GetComponent<Ball>();
+                ballScript.Crashed();
+            }
 
-        if (col.gameObject.CompareTag(Tags.PowerUp))
-        {
-            Destroy(col.gameObject);
+            if (col.gameObject.CompareTag(Tags.PowerUp))
+            {
+                Destroy(col.gameObject);
+            }
         }
     }
 }

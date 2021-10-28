@@ -1,40 +1,43 @@
 ﻿using Shared;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
-public class AudioManager : Singleton<AudioManager>
+namespace Managers
 {
-    [SerializeField] private AudioClip ballCrashSound;
-    [SerializeField] private AudioClip ballBounceSound;
-    [SerializeField] private AudioClip powerUpSound;
-
-    private AudioSource _audioSource;
-
-    private void Awake()
+    [RequireComponent(typeof(AudioSource))]
+    public class AudioManager : Singleton<AudioManager>
     {
-        Helpers.AssertIsNotNullOrQuit(ballCrashSound, "AudioManager.ballCrashSound was not assigned");
-        Helpers.AssertIsNotNullOrQuit(ballBounceSound, "AudioManager.ballBounceSound was not assigned");
-        Helpers.AssertIsNotNullOrQuit(powerUpSound, "AudioManager.powerUpSound was not assigned");
+        [SerializeField] private AudioClip ballCrashSound;
+        [SerializeField] private AudioClip ballBounceSound;
+        [SerializeField] private AudioClip powerUpSound;
 
-        _audioSource = GetComponent<AudioSource>();
+        private AudioSource _audioSource;
 
-        ballCrashSound.LoadAudioData();
-        ballBounceSound.LoadAudioData();
-        powerUpSound.LoadAudioData();
-    }
+        private void Awake()
+        {
+            Helpers.AssertIsNotNullOrQuit(ballCrashSound, "AudioManager.ballCrashSound was not assigned");
+            Helpers.AssertIsNotNullOrQuit(ballBounceSound, "AudioManager.ballBounceSound was not assigned");
+            Helpers.AssertIsNotNullOrQuit(powerUpSound, "AudioManager.powerUpSound was not assigned");
 
-    public void PlayBallBounce()
-    {
-        _audioSource.PlayOneShot(ballBounceSound);
-    }
+            _audioSource = GetComponent<AudioSource>();
 
-    public void PlayBallCrash()
-    {
-        _audioSource.PlayOneShot(ballCrashSound);
-    }
+            ballCrashSound.LoadAudioData();
+            ballBounceSound.LoadAudioData();
+            powerUpSound.LoadAudioData();
+        }
 
-    public void PlayPowerUp()
-    {
-        _audioSource.PlayOneShot(powerUpSound);
+        public void PlayBallBounce()
+        {
+            _audioSource.PlayOneShot(ballBounceSound);
+        }
+
+        public void PlayBallCrash()
+        {
+            _audioSource.PlayOneShot(ballCrashSound);
+        }
+
+        public void PlayPowerUp()
+        {
+            _audioSource.PlayOneShot(powerUpSound);
+        }
     }
 }

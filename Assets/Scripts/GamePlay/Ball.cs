@@ -1,55 +1,58 @@
-using System;
+using Managers;
 using Shared;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(Rigidbody2D))]
-public class Ball : MonoBehaviour
+namespace GamePlay
 {
-    private Rigidbody2D _rigidbody;
-    private bool _spawnFinished;
-
-    // Start is called before the first frame update
-    private void Awake()
+    [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class Ball : MonoBehaviour
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _spawnFinished = transform.parent == null;
-    }
+        private Rigidbody2D _rigidbody;
+        private bool _spawnFinished;
 
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag(Tags.Player) && _spawnFinished)
+        // Start is called before the first frame update
+        private void Awake()
         {
-            var currentVelocity = _rigidbody.velocity;
-            currentVelocity = (transform.position - col.transform.position).normalized * currentVelocity.magnitude;
-            _rigidbody.velocity = currentVelocity;
-            Bounced();
+            _rigidbody = GetComponent<Rigidbody2D>();
+            _spawnFinished = transform.parent == null;
         }
-    }
 
-    public void Bounced()
-    {
-        GameManager.Instance.BallBounced();   
-    }
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.gameObject.CompareTag(Tags.Player) && _spawnFinished)
+            {
+                var currentVelocity = _rigidbody.velocity;
+                currentVelocity = (transform.position - col.transform.position).normalized * currentVelocity.magnitude;
+                _rigidbody.velocity = currentVelocity;
+                Bounced();
+            }
+        }
 
-    public void Spawned()
-    {
-        _spawnFinished = true;
-    }
+        public void Bounced()
+        {
+            GameManager.Instance.BallBounced();   
+        }
 
-    /// <summary>
-    /// Kicks the balls in a given direction with a given force
-    /// </summary>
-    /// <param name="normalizedDirection">normalized direction to kick start the ball</param>
-    /// <param name="force"></param>
-    public void KickStart(Vector2 normalizedDirection, float force)
-    {
-        _rigidbody.AddForce(normalizedDirection * force, ForceMode2D.Impulse);
-    }
+        public void Spawned()
+        {
+            _spawnFinished = true;
+        }
 
-    public void Crashed()
-    {
-        GameManager.Instance.BallCrashed(this);
-        Destroy(gameObject);
+        /// <summary>
+        /// Kicks the balls in a given direction with a given force
+        /// </summary>
+        /// <param name="normalizedDirection">normalized direction to kick start the ball</param>
+        /// <param name="force"></param>
+        public void KickStart(Vector2 normalizedDirection, float force)
+        {
+            _rigidbody.AddForce(normalizedDirection * force, ForceMode2D.Impulse);
+        }
+
+        public void Crashed()
+        {
+            GameManager.Instance.BallCrashed(this);
+            Destroy(gameObject);
+        }
     }
 }
