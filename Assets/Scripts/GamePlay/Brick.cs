@@ -1,3 +1,4 @@
+using Managers;
 using Shared;
 using UnityEngine;
 
@@ -57,6 +58,7 @@ namespace GamePlay
                 DropPowerUp();
             }
             Destroy(gameObject);
+            GameManager.Instance.BrickDestroyed(this);
         }
 
         public void SetPowerUp(PowerUpType type, BrickPowerUpApplies applies)

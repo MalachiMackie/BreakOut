@@ -45,14 +45,9 @@ namespace GamePlay
 
         private void Update()
         {
-            if (_hasBalls && Input.GetKeyDown(KeyCode.Space))
+            if (_hasBalls && Input.GetKeyDown(KeyCode.Space) && GameManager.Instance.IsPlaying)
             {
                 KickBalls();
-            }
-
-            if (!_hasBalls && Input.GetKeyDown(KeyCode.DoubleQuote))
-            {
-                NewBalls(1);
             }
         }
 

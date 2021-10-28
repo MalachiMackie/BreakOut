@@ -26,6 +26,12 @@ namespace Shared
             action(param);
         }
 
+        public static IEnumerator DoNextFrame(Action action)
+        {
+            yield return 0;
+            action();
+        }
+
         public static IEnumerator DoNextPhysicsUpdate<T>(T param, Action<T> action)
         {
             yield return new WaitForFixedUpdate();

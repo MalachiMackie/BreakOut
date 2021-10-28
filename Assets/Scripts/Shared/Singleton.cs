@@ -12,5 +12,10 @@ namespace Shared
         public static T Instance =>
             _instance ??= FindObjectOfType<T>()
                           ?? throw new InvalidOperationException($"No {typeof(T).Name} found in scene");
+
+        private void OnDestroy()
+        {
+            _instance = null;
+        }
     }
 }

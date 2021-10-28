@@ -6,8 +6,9 @@ namespace Menus
 {
     public class StartMenu : MonoBehaviour
     {
-        private void Awake() {
-            GameManager.Instance.GameStarted += OnGameStarted;      
+        private void Start()
+        {
+            GameManager.Instance.GameStarted += OnGameStarted;
         }
 
         private void OnGameStarted(object sender, EventArgs e)
@@ -23,6 +24,11 @@ namespace Menus
         public void Quit()
         {
             GameManager.Instance.Quit();
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance.GameStarted -= OnGameStarted;
         }
     }
 }

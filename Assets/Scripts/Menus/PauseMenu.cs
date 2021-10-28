@@ -8,9 +8,8 @@ namespace Menus
     {
         private bool _paused;
     
-        private void Awake()
+        private void Start()
         {
-            Debug.Log("Hello World");
             GameManager.Instance.GamePaused += OnGamePaused;
             gameObject.SetActive(false);
         }
@@ -44,6 +43,11 @@ namespace Menus
             _paused = false;
             gameObject.SetActive(false);
             GameManager.Instance.Unpause();
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance.GamePaused -= OnGamePaused;
         }
     }
 }

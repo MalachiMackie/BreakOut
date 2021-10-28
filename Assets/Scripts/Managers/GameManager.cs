@@ -4,6 +4,7 @@ using System.Linq;
 using GamePlay;
 using Shared;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace Managers
@@ -11,7 +12,7 @@ namespace Managers
     public class GameManager : Singleton<GameManager>
     {
         [SerializeField] private GameObject powerUpPrefab;
-        [SerializeField] private Player player;
+        private Player _player;
 
         public event EventHandler GamePaused;
         public event EventHandler<GameState> GameFinished;
@@ -19,19 +20,36 @@ namespace Managers
 
         private GameState _gameState;
 
+        public readonly Guid _id = Guid.NewGuid();
+
+        public bool IsPlaying => _gameState == GameState.Playing;
+
+        private void Awake()
+        {
+            var otherGameManagers = FindObjectsOfType<GameManager>();
+            if (otherGameManagers.Any(x => x._id != _id))
+            {
+                Destroy(gameObject);
+                return;
+            }
+            
+            Debug.Log(_id);
+
+            DontDestroyOnLoad(gameObject);
+        }
+
         private void Start()
         {
             _gameState = GameState.StartMenu;
             Helpers.AssertIsNotNullOrQuit(powerUpPrefab, "GameManager.powerUpPrefab was not assigned");
-            Helpers.AssertIsNotNullOrQuit(player, "GameManager.player was not assigned");
             SetupLevel();
             Time.timeScale = 0f;
         }
-    
+
         // Update is called once per frame
         private void Update()
         {
-            if (_gameState != GameState.Paused && Input.GetKeyDown(KeyCode.Escape))
+            if (_gameState == GameState.Playing && Input.GetKeyDown(KeyCode.Escape))
             {
                 Pause();
             }
@@ -57,6 +75,8 @@ namespace Managers
 
         private void SetupLevel()
         {
+            _player = FindObjectOfType<Player>();
+            Helpers.AssertIsNotNullOrQuit(_player, "Could not find player in level");
             var levelDetails = FindObjectOfType<LevelDetails>();
             var bricks = FindObjectsOfType<Brick>();
             var poweredUpBricks = new HashSet<int>();
@@ -77,14 +97,27 @@ namespace Managers
                     {
                         index = Random.Range(0, bricks.Length);
                     } while (poweredUpBricks.Contains(index));
-                
+
                     poweredUpBricks.Add(index);
                     bricksLeft--;
                     bricks[index].SetPowerUp(powerUp.type, powerUp.applies);
                 }
             }
-        
-            player.NewBalls(1);
+
+            _player.NewBalls(1);
+        }
+
+        public void Restart()
+        {
+            var currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadSceneAsync(currentScene.buildIndex).completed += _ =>
+            {
+                StartCoroutine(Helpers.DoNextFrame(() =>
+                {
+                    SetupLevel();
+                    StartGame();
+                }));
+            };
         }
 
         public void StartGame()
@@ -94,13 +127,22 @@ namespace Managers
             Time.timeScale = 1f;
         }
 
+        public void BrickDestroyed(Brick destroyedBrick)
+        {
+            var bricks = FindObjectsOfType<Brick>();
+            if (!bricks.Except(new[] {destroyedBrick}).Any())
+            {
+                PlayerWon();
+            }
+        }
+
         public void BallCrashed(Ball crashedBall)
         {
             AudioManager.Instance.PlayBallCrash();
-            var ballsRemaining = FindObjectsOfType<Ball>().Except(new [] {crashedBall});
+            var ballsRemaining = FindObjectsOfType<Ball>().Except(new[] {crashedBall});
             if (!ballsRemaining.Any())
             {
-                PlayerLostLife();
+                PlayerDied();
             }
         }
 
@@ -112,18 +154,25 @@ namespace Managers
         private void PlayerDied()
         {
             _gameState = GameState.Lost;
-            GameFinished?.Invoke(this, _gameState);
+            GameEnded();
         }
 
-        private void PlayerLostLife()
+        private void PlayerWon()
         {
-            Debug.Log("You're Dead :(");
-            PlayerDied();
+            _gameState = GameState.Won;
+            GameEnded();
+        }
+
+        private void GameEnded()
+        {
+            Time.timeScale = 0f;
+            GameFinished?.Invoke(this, _gameState);
         }
     }
 
     public enum GameState
     {
+        None,
         StartMenu,
         Playing,
         Paused,
